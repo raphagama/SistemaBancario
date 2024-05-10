@@ -1,9 +1,9 @@
 menu = """
 
-[d] Depositar
-[s] Sacar
-[e] Extrato
-[q] Sair
+[1] Depositar
+[2] Sacar
+[3] Extrato
+[0] Sair
 
 => """
 
@@ -17,17 +17,17 @@ while True:
 
     opcao = input(menu)
 
-    if opcao == "d":
-        valor = float(input("Informe o valor do depósito: "))
+    if opcao == "1":
+        valor = float(input("Informe o valor para inserção na conta: "))
 
         if valor > 0:
             saldo += valor
-            extrato += f"Depósito: R$ {valor:.2f}\n"
+            extrato += f"Depositado: R$ {valor:.2f}\n"
 
         else:
-            print("Operação falhou! O valor informado é inválido.")
+            print("Fom! Operação não deu certoi, o valor informado é inválido.")
 
-    elif opcao == "s":
+    elif opcao == "2":
         valor = float(input("Informe o valor do saque: "))
 
         excedeu_saldo = valor > saldo
@@ -37,13 +37,13 @@ while True:
         excedeu_saques = numero_saques >= LIMITE_SAQUES
 
         if excedeu_saldo:
-            print("Operação falhou! Você não tem saldo suficiente.")
+            print("Fom! Não deu certo pois você não tem saldo suficiente.")
 
         elif excedeu_limite:
-            print("Operação falhou! O valor do saque excede o limite.")
+            print("Fom! Não deu certo pois o valor do saque excede o limite.")
 
         elif excedeu_saques:
-            print("Operação falhou! Número máximo de saques excedido.")
+            print("Fom! Não deu certo pois o número máximo de saques excedido.")
 
         elif valor > 0:
             saldo -= valor
@@ -51,16 +51,16 @@ while True:
             numero_saques += 1
 
         else:
-            print("Operação falhou! O valor informado é inválido.")
+            print("Fom! Não deu certo pois o valor informado é inválido.")
 
-    elif opcao == "e":
+    elif opcao == "3":
         print("\n================ EXTRATO ================")
-        print("Não foram realizadas movimentações." if not extrato else extrato)
+        print("Sem movimentações até o momento." if not extrato else extrato)
         print(f"\nSaldo: R$ {saldo:.2f}")
         print("==========================================")
 
-    elif opcao == "q":
+    elif opcao == "0":
         break
 
     else:
-        print("Operação inválida, por favor selecione novamente a operação desejada.")
+        print("Fom! Não deu certo, por favor selecione novamente a operação desejada.")
